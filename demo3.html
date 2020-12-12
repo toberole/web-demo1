@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+   
+    <!-- 事件代理
+    事件代理就是在祖级DOM元素绑定一个事件，当触发子孙级DOM元素的事件时，利用事件流的原理来触发绑定在祖级DOM的事件。 -->
+
+</head>
+
+<body>
+    <div id="div1">
+        <a href="#">a1</a>
+        <a href="#">a2</a>
+        <a href="#">a3</a>
+        <a href="#">a4</a>
+        <!-- 会随时新增更多的 a 标签 -->
+    </div>
+    
+    <script type="text/javascript">
+        var div1 = document.getElementById('div1');
+        div1.addEventListener('click',function(e){
+            //target属性返回触发该事件的节点
+            var target = e.target;
+            //nodeName返回的标签名都是大写
+            if(target.nodeName == 'A'){
+                alert(target.innerHTML);
+            }
+        })
+    </script>
+</body>
+
+</html>

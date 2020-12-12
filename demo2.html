@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- 事件冒泡 按照DOM树形结构，由子级到祖级的顺序传播 -->
+</head>
+
+<body>
+    <div id="div1">
+        <p id="p1">激活</p>
+        <p id="p2">取消</p>
+        <p id="p3">取消</p>
+        <p id="p4">取消</p>
+    </div>
+    <div id="div2">
+        <p id="p5">取消</p>
+        <p id="p6">取消</p>
+    </div>
+
+    <script>
+        var p1 = document.getElementById('p1');
+        var body = document.body;
+        function bindEvent(elem, type, fn) {
+            elem.addEventListener(type, fn);
+        }
+
+        bindEvent(p1, 'click', function (e) {
+            e.stopPropagation();
+            alert('激活');
+        })
+        bindEvent(body, 'click', function () {
+            alert('取消');
+        })
+    </script>
+</body>
+
+</html>
